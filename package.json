@@ -1,0 +1,93 @@
+{
+  "name": "terra-content-package-template",
+  "version": "1.0.0",
+  "description": "A model repo for how terra applications should look",
+  "main": "./lib/index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjhenkes/terra-content-package-template.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mjhenkes/terra-content-package-template/issues"
+  },
+  "homepage": "https://github.com/mjhenkes/terra-content-package-template#readme",
+  "eslintConfig": {
+    "extends": "@cerner/terra"
+  },
+  "stylelint": {
+    "extends": "@cerner/stylelint-config-terra"
+  },
+  "scripts": {
+    "clean": "rm package-lock.json; rm -rf node_modules",
+    "clean:install": "npm run clean && npm install",
+    "compile": "babel src --out-dir lib --copy-files",
+    "compile:dev": "webpack",
+    "compile:prod": "rm -rf ./build; webpack --mode=production",
+    "compile:lowlight": "rm -rf ./build; THEME=clinical-lowlight-theme webpack --mode=production",
+    "compile:fusion": "rm -rf ./build; THEME=orion-fusion-theme webpack --mode=production",
+    "deploy": "npm run compile:prod && gh-pages -d build",
+    "jest": "jest",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:js": "eslint --ext .js,.jsx .",
+    "lint:scss": "stylelint src/**/*.scss",
+    "prepare": "npm run compile",
+    "start": "webpack serve",
+    "start-dev": "webpack serve -c ./webpack.test.config.js",
+    "start-prod": "webpack serve --mode=production",
+    "test": "npm run lint && npm run jest && npm run wdio",
+    "wdio-default": "terra wdio",
+    "wdio-lowlight": "terra wdio --themes clinical-lowlight-theme",
+    "wdio-fusion": "terra wdio --themes orion-fusion-theme",
+    "wdio": "terra wdio --themes clinical-lowlight-theme orion-fusion-theme terra-default-theme"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react-router-dom": "^5.2.0",
+    "terra-button": "^3.53.0",
+    "terra-hyperlink": "^2.47.0",
+    "terra-icon": "^3.41.0",
+    "terra-list": "^4.46.0"
+  },
+  "peerDependencies": {
+    "@cerner/terra-application": "^1.35.0",
+    "react-dom": "^16.8.5",
+    "react": "^16.8.5",
+    "webpack": "^4.44.2 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@cerner/browserslist-config-terra": "^3.1.0",
+    "@cerner/eslint-config-terra": "^5.0.0",
+    "@cerner/jest-config-terra": "^1.0.0",
+    "@cerner/stylelint-config-terra": "^4.0.0",
+    "@cerner/terra-application": "cerner/terra-application#869470a0cc93cb4eb4e3494ebe543c4405441ca4",
+    "@cerner/terra-cli": "^1.1.0",
+    "@cerner/terra-functional-testing": "^1.0.1",
+    "@cerner/terra-open-source-scripts": "^1.1.0",
+    "@cerner/webpack-config-terra": "^1.0.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "application-harness": "mjhenkes/application-harness#main",
+    "copy-webpack-plugin": "^9.0.0",
+    "eslint": "^7.0.0",
+    "gh-pages": "^3.1.0",
+    "html-webpack-plugin": "^5.0.0",
+    "jest": "^26.6.3",
+    "postcss": "^8.2.1",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-intl": "^5.13.2",
+    "regenerator-runtime": "^0.13.7",
+    "stylelint": "^13.10.0",
+    "webpack": "^5.20.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.3.0"
+  }
+}

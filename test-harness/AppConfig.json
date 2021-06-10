@@ -1,0 +1,39 @@
+{
+  "applications": {
+    "terra-content-package-template": {
+      "id": "terra-content-package-template",
+      "title": "terra-content-package-template",
+      "version": "0.0.1",
+      "route": "terra-content-package-template",
+      "requiresPatientContext": false,
+      "modules": {
+        "pages": [
+          {
+            "navigationKey": "page-example",
+            "label": "Page Example",
+            "moduleKey": "PageExample"
+          }
+        ]
+      }
+    }
+  },
+  "modules": {
+    "pages": {
+      "PageExample": {
+        "url": "/remoteEntry.js",
+        "scope": "terra_content_package_template",
+        "module": "./PageExample"
+
+      }
+    },
+    "workspaceItems": {
+
+    },
+    "extensions": {
+
+    },
+    "workflowSummaryItems": {
+
+    }
+  }
+}
