@@ -7,7 +7,7 @@ const terraApplicationConfig = () => ({
     publicPath: 'auto',
   },
   devServer: {
-    port: 8081,
+    port: 8083,
   },
   plugins: [
     new ModuleFederationPlugin({
